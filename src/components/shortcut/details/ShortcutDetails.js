@@ -1,32 +1,14 @@
 import React, { Component } from 'react';
 
 class ShortcutDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shortcut: {},
-      loading: true
-    }
-  }
-
-  componentDidMount() {
-    this.fetchShortcut();
-  }
-  
-  fetchShortcut() {
-    const {id} = this.props.match.params;
-    fetch(process.env.REACT_APP_API_URL + '/shortcuts/' + id)
-      .then(response => response.json())
-      .then(data => this.setState({ shortcut: data, loading: false}))
-  }
-
-
   render() {
-    const { loading, shortcut } = this.state;
+    const {shortcut} = this.props;
 
-    if (loading) {
-      return <h1>Chargement</h1>
+    if (!shortcut) {
+      return <div>Loading</div>
+      //TODO : ajouter un Loader
     }
+
     return (
       <div>
         <img src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
@@ -40,7 +22,7 @@ class ShortcutDetails extends Component {
         </ul>
         <img src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.image} alt={shortcut.title}/>
       </div>
-    );
+      )
   }
 }
 

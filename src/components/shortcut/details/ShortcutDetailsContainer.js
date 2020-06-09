@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import ShortcutDetails from './ShortcutDetails';
 
-const mapStateToProps = state => ({
-  shortcuts: state.shortcuts.shortcuts
+const mapStateToProps = (state, ownProps) => ({
+  shortcut: state.shortcuts.shortcuts.find(shortcut => shortcut.id === parseInt(ownProps.match.params.id))
 });
 
 const mapDispatchToProps = dispatch => ({
