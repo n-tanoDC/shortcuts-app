@@ -5,7 +5,7 @@ export const FETCH_SHORTCUTS_SUCCESS = 'FETCH_SHORTCUTS_SUCCESS';
 export function fetchShortcuts() {
   return dispatch => {
     dispatch(fetchShortcutsPending());
-    fetch(process.env.REACT_APP_API_URL + '/shortcuts')
+    fetch(process.env.REACT_APP_API_URL + '/shortcuts?order[created_at]=asc')
       .then(response => response.json())
       .then(data => dispatch(fetchShortcutsSuccess(data['hydra:member'])))
       .catch(error => dispatch(fetchShortcutsFailure(error)));
