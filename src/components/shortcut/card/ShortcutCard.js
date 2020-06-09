@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { NavLink } from 'react-router-dom';
 import './ShortcutCard.scss';
 
 class ShortcutCard extends Component {
@@ -14,7 +15,7 @@ class ShortcutCard extends Component {
           <div className="card-body col">
             <h2 className="card-title">{shortcut.title}</h2>
             <p className="card-text">{shortcut.context}</p>
-            <a href="#" className="btn btn-primary">Voir plus</a>
+            <NavLink to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>
           </div>
         </div>
       </div>
