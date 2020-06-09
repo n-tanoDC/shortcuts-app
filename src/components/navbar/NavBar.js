@@ -17,7 +17,7 @@ class NavBar extends Component {
               <NavLink exact to='/' className='nav-link' activeClassName='active'>Accueil</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to='/softwares' className='nav-link' activeClassName='active'>Logiciels</NavLink>
+              <NavLink to='/software' className='nav-link' activeClassName='active'>Logiciels</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to='/add-shortcut' className='nav-link' activeClassName='active'>Ajouter un raccourci</NavLink>
