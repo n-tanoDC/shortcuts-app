@@ -7,7 +7,7 @@ class SoftwareCard extends Component {
     let jsxShortcuts = <p>Aucun raccourci pour {software.name}</p>
     
     if (shortcuts[0]) {
-      jsxShortcuts = shortcuts.map(shortcut => <Link to={"/shortcut/" + shortcut.id}>{shortcut.title}</Link>)
+      jsxShortcuts = shortcuts.map(shortcut => <Link key={shortcut.id} to={"/shortcut/" + shortcut.id}>{shortcut.title}</Link>)
     }
     
 

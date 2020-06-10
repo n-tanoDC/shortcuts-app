@@ -10,11 +10,14 @@ export const FETCH_CATEGORIES_PENDING = 'FETCH_CATEGORIES_PENDING';
 export const FETCH_CATEGORIES_FAILURE = 'FETCH_CATEGORIES_FAILURE';
 export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
 
+export const ADD_SHORTCUT_PENDING = 'ADD_SHORTCUT_PENDING';
+export const ADD_SHORTCUT_FAILURE = 'ADD_SHORTCUT_FAILURE';
+export const ADD_SHORTCUT_SUCCESS = 'ADD_SHORTCUT_SUCCESS';
 
 export function fetchShortcuts() {
   return dispatch => {
     dispatch(fetchShortcutsPending());
-    fetch(process.env.REACT_APP_API_URL + '/shortcuts?order[created_at]=asc')
+    fetch(process.env.REACT_APP_API_URL + '/shortcuts?order[created_at]=desc')
       .then(response => response.json())
       .then(data => dispatch(fetchShortcutsSuccess(data['hydra:member'])))
       .catch(error => dispatch(fetchShortcutsFailure(error)));
@@ -77,3 +80,41 @@ export function fetchCategoriesSuccess(categories) {
   return { type: FETCH_CATEGORIES_SUCCESS, payload: { categories: categories } };
 }
 
+export function addShortcut(shortcut) {
+  return dispatch => {
+    dispatch(addShortcutPending());
+    fetch(process.env.REACT_APP_API_URL + '/shortcuts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(shortcut)
+    })
+      .then(response => {
+        if (response.status !== 201) {
+          return dispatch(addShortcutFailure(response.statusText))
+        }
+        return response.json()
+      })
+      .then(data => {
+        if (typeof data['id'] !== 'undefined') {
+          dispatch(addShortcutSuccess(data));
+        }
+      })
+      .catch(err => dispatch(addShortcutFailure(err)))
+      .then(() => dispatch(fetchShortcuts()))
+  };
+}
+
+export function addShortcutPending() {
+  return { type: ADD_SHORTCUT_PENDING, payload: null };
+}
+
+export function addShortcutFailure(error) {
+  return { type: ADD_SHORTCUT_FAILURE, payload: { error: error } };
+}
+
+export function addShortcutSuccess(shortcut) {
+  return { type: ADD_SHORTCUT_SUCCESS, payload: { shortcut: shortcut } };
+}

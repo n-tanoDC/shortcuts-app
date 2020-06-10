@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SoftwaresPage from './SoftwarePage';
+import SoftwaresPage from './SoftwaresPage';
 
 const mapStateToProps = state => ({
   softwares: state.shortcuts.softwares

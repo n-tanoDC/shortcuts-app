@@ -11,7 +11,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
-import SoftwarePage from './components/pages/software/SoftwarePageContainer';
+import SoftwaresPage from './components/pages/software/SoftwaresPageContainer';
 import NavBar from "./components/navbar/NavBar";
 import HomePage from "./components/pages/home/HomePage";
 import AddShortcutPage from "./components/pages/add-shortcut/AddShortcutPageContainer";
@@ -33,7 +33,7 @@ function App() {
         <NavBar/>
         <Switch>
           <Route exact path='/' component={HomePage}/>
-          <Route path='/software' component={SoftwarePage}/>
+          <Route path='/software' component={SoftwaresPage}/>
           <Route path='/add-shortcut' component={AddShortcutPage}/>
           <Route path='/shortcut/:id' component={ShortcutDetails}/>
         </Switch>

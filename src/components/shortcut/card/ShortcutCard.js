@@ -14,7 +14,7 @@ class ShortcutCard extends Component {
           <div className="card-body col">
             <h2 className="card-title">{shortcut.title}</h2>
             <p className="card-text">{shortcut.context}</p>
-            <NavLink to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>
+            <NavLink className="btn btn-primary" to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>
           </div>
         </div>
       </div>
