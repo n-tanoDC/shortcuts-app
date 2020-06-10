@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SoftwareCard from './card/SoftwareCard';
+import SoftwareCard from './card/SoftwareCardContainer';
 
 class SoftwaresPage extends Component {
   render() {
