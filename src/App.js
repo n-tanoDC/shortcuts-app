@@ -1,18 +1,21 @@
 import React from 'react';
-import {createStore, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import thunkMiddleware from "redux-thunk";
-import {composeWithDevTools} from "redux-devtools-extension";
-import reducers from "./reducers/reducers";
-import {fetchShortcuts, fetchSoftware} from "./actions/actions";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
-import NavBar from "./components/navbar/NavBar";
-import HomePage from "./components/pages/home/HomePage";
-import AddShortcutPage from "./components/pages/add-shortcut/AddShortcutPage";
-import ShortcutDetails from "./components/shortcut/details/ShortcutDetailsContainer";
 import 'bootstrap';
 import './App.scss';
+
+import {fetchShortcuts, fetchSoftwares, fetchCategories} from "./actions/actions";
+import {createStore, applyMiddleware} from "redux";
+import {Provider} from "react-redux";
+import reducers from "./reducers/reducers";
+import thunkMiddleware from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
+
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+
 import SoftwarePage from './components/pages/software/SoftwarePageContainer';
+import NavBar from "./components/navbar/NavBar";
+import HomePage from "./components/pages/home/HomePage";
+import AddShortcutPage from "./components/pages/add-shortcut/AddShortcutPageContainer";
+import ShortcutDetails from "./components/shortcut/details/ShortcutDetailsContainer";
 
 const store = createStore(
   reducers,
@@ -20,7 +23,8 @@ const store = createStore(
 );
 
 store.dispatch(fetchShortcuts());
-store.dispatch(fetchSoftware());
+store.dispatch(fetchSoftwares());
+store.dispatch(fetchCategories());
 
 function App() {
   return (

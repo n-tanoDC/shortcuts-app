@@ -3,9 +3,9 @@ import SoftwareCard from './card/SoftwareCardContainer';
 
 class SoftwaresPage extends Component {
   render() {
-    const {software} = this.props;
+    const {softwares} = this.props;
 
-    const jsxSoftware = software.map(soft => <SoftwareCard software={soft} key={soft.id}/>) 
+    const jsxSoftware = softwares.map(software => <SoftwareCard software={software} key={software.id}/>) 
     return (
       <div className="row row-cols-1 row-cols-md-2">
         {jsxSoftware}

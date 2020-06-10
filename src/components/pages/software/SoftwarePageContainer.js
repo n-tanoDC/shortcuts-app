@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SoftwaresPage from './SoftwarePage';
 
 const mapStateToProps = state => ({
-  software: state.software.software
+  softwares: state.shortcuts.softwares
 });
 
 const mapDispatchToProps = dispatch => ({
