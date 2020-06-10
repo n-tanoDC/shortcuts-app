@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
-import './ShortcutCard.scss';
 
 class ShortcutCard extends Component {
   render() {
     const {shortcut} = this.props;
 
     return (
-      <div className="shortcut-card col mb-4 mt-4">
-        <div className="card">
+      <div className="col p-4">
+        <div className="card flex-row align-items-center">
           <div className="col-2">
-            <img src={process.env.REACT_APP_UPLOADS_URL + '/' +shortcut.software.logo} className="card-img-top shortcut-card_img" alt={shortcut.software.name}/>
+            <img src={process.env.REACT_APP_UPLOADS_URL + '/' +shortcut.software.logo} className="card-img-top" alt={shortcut.software.name}/>
           </div>
           <div className="card-body col">
             <h2 className="card-title">{shortcut.title}</h2>

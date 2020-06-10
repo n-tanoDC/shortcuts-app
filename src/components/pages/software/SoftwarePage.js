@@ -7,7 +7,7 @@ class SoftwaresPage extends Component {
 
     const jsxSoftware = software.map(soft => <SoftwareCard software={soft} key={soft.id}/>) 
     return (
-      <div>
+      <div className="row row-cols-1 row-cols-md-2">
         {jsxSoftware}
       </div>
     );

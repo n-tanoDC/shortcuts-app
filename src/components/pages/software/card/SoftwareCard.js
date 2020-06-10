@@ -5,13 +5,14 @@ class SoftwareCard extends Component {
     const {software} = this.props;
 
     return (
-      <div className="software-card col mb-4 mt-4">
-        <div className="card">
+      <div className="col p-4">
+        <div className="card flex-row align-items-center">
           <div className="col-2">
-            <img src={process.env.REACT_APP_UPLOADS_URL + '/' + software.logo} className="card-img-top software-card_img" alt={software.name}/>
+            <img src={process.env.REACT_APP_UPLOADS_URL + '/' + software.logo} className="card-img-top" alt={software.name}/>
           </div>
-          <div className="card-body col">
-            <h2 className="card-title">{software.name}</h2>
+          <div className="card-body">
+            <h2 className="card-text">{software.name}</h2>
+            <button className="btn btn-primary">Voir les raccourcis</button>
           </div>
         </div>
       </div>
