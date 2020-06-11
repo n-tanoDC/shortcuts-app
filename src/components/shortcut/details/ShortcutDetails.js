@@ -17,12 +17,12 @@ class ShortcutDetails extends Component {
 
     const categories = this.getCategories(shortcut);
 
-    const jsxDemo = shortcut.image === '' || shortcut.image === undefined ? 'Aucune démonstration pour ce raccourci.' : <img className="w-50" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.image} alt={shortcut.title}/>
+    const jsxDemo = shortcut.image === '' || shortcut.image === undefined ? 'Aucune démonstration pour ce raccourci.' : <img className="w-100" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.image} alt={shortcut.title}/>
 
     return (
       <div>
-        <div className="d-flex align-items-center bg-dark">
-          <img className="h-100 col-1 m-4" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
+        <div className="d-flex align-items-center bg-dark p-1">
+          <img className="h-100 col-1 m-4 d-none d-md-block" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
           <div className="p-1">
             <h1 className="display-4 text-light my-2">{shortcut.title}</h1>
             <div className="my-2">
@@ -32,6 +32,10 @@ class ShortcutDetails extends Component {
         </div>
         <table className="table bg-light text-dark p-4">
           <tbody>
+            <tr>
+              <th scope="row">Logiciel</th>
+              <td className="w-100">{shortcut.software.name}</td>
+            </tr>
             <tr>
               <th scope="row">Contexte</th>
               <td className="w-100">{shortcut.context}</td>
