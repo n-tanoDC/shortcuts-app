@@ -1,26 +1,63 @@
 import React, { Component } from 'react';
 
 class ShortcutDetails extends Component {
-  render() {
-    const {shortcut} = this.props;
+  
+  getCategories(shortcut) {
+    let jsxCategories = shortcut.categories.map(category => <span className="badge badge-info p-1 mr-2" key={category.id}>{category.name}</span>);
+    return jsxCategories;
+  } 
 
-    if (!shortcut) {
+  render() {
+    const {shortcut, loading} = this.props;
+
+    if (loading) {
       return <div>Loading</div>
       //TODO : ajouter un Loader
     }
 
+    const categories = this.getCategories(shortcut);
+
+    const jsxDemo = shortcut.image === '' || shortcut.image === undefined ? 'Aucune démonstration pour ce raccourci.' : <img className="w-50" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.image} alt={shortcut.title}/>
+
     return (
       <div>
-        <img src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
-        <h1>{shortcut.title}</h1>
-        <p>{shortcut.context}</p>
-        <p>{shortcut.description}</p>
-        <ul>
-          <li>Windows : {shortcut.windows}</li>
-          <li>Mac OS : {shortcut.macos}</li>
-          <li>Linux : {shortcut.linux}</li>
-        </ul>
-        <img src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.image} alt={shortcut.title}/>
+        <div className="d-flex align-items-center bg-dark">
+          <img className="h-100 col-1 m-4" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
+          <div className="p-1">
+            <h1 className="display-4 text-light my-2">{shortcut.title}</h1>
+            <div className="my-2">
+              {categories}
+            </div>
+          </div>
+        </div>
+        <table className="table bg-light text-dark p-4">
+          <tbody>
+            <tr>
+              <th scope="row">Contexte</th>
+              <td className="w-100">{shortcut.context}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{shortcut.description}</td>
+            </tr>
+            <tr>
+              <th scope="row">Windows</th>
+              <td>{shortcut.windows}</td>
+            </tr>
+            <tr>
+              <th scope="row">Mac OS</th>
+              <td>{shortcut.macos}</td>
+            </tr>
+            <tr>
+              <th scope="row">Linux</th>
+              <td>{shortcut.linux}</td>
+            </tr>
+            <tr>
+              <th scope="row">Démonstration</th>
+              <td>{jsxDemo}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       )
   }
