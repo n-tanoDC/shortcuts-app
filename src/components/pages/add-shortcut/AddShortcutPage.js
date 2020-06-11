@@ -23,7 +23,7 @@ class AddShortcutPage extends Component {
   handleChange(event) {
     let value, propertyName;
 
-    if (event[0]) {
+    if (Array.isArray(event)) {
       propertyName = "categories";
       value = event.map(e => e.value);
     } else {
@@ -64,7 +64,7 @@ class AddShortcutPage extends Component {
     // const jsxCategories = categories.map(category => <option key={category.id} value={'/api/categories/' + category.id}>{category.name}</option>);
     const jsxCategories = categories.map(category => ({ value: '/api/categories/' + category.id, label: category.name}));
 
-    if (loading.categories || loading.softwares || loading.form) {
+    if (loading.categories || loading.softwares || loading.form || loading.shortcuts) {
       return (
         <Loader
           className="loader"
