@@ -42,7 +42,10 @@ class ShortcutGrid extends Component {
         <div className="row row-cols-1 row-cols-md-2">
           {shortcutsJsx}
         </div>
-        <button disabled={cardsDisplayed >= shortcuts.length} onClick={() => this.handleClick()} className="btn btn-secondary w-25">Voir Plus</button>
+        <div className="btn-group">
+          <button disabled={cardsDisplayed >= shortcuts.length} onClick={() => this.handleClick()} className="btn btn-warning text-white">Voir Plus</button>
+          <a className="btn btn-info" href="#">Haut de la page</a>
+        </div>
       </div>
     );
   }
