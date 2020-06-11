@@ -4,8 +4,14 @@ import moment from 'moment';
 import 'moment/locale/fr'
 
 class ShortcutCard extends Component {
+  getCategories(shortcut) {
+    let jsxCategories = shortcut.categories.map(category => <span className="badge badge-secondary p-1 mr-2" key={category.id}>{category.name}</span>);
+    return jsxCategories;
+  } 
+
   render() {
     const {shortcut} = this.props;
+    const categories = this.getCategories(shortcut);
     const date = moment(shortcut.created_at).locale('fr').fromNow();
 
     return (
@@ -16,6 +22,7 @@ class ShortcutCard extends Component {
           </div>
           <div className="card-body col">
             <h2 className="card-title">{shortcut.title}</h2>
+            <p>{categories}</p>
             <p className="card-text">{shortcut.context}</p>
             <p>{date}</p>
             <NavLink className="btn btn-primary" to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>

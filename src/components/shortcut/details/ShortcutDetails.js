@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from 'react-loader-spinner';
 
 class ShortcutDetails extends Component {
   
@@ -11,8 +12,14 @@ class ShortcutDetails extends Component {
     const {shortcut, loading} = this.props;
 
     if (loading) {
-      return <div>Loading</div>
-      //TODO : ajouter un Loader
+      return (
+        <Loader
+          className="loader"
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />)
     }
 
     const categories = this.getCategories(shortcut);

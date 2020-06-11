@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Loader from 'react-loader-spinner';
 
 class AddShortcutPage extends Component {
 
@@ -45,15 +46,16 @@ class AddShortcutPage extends Component {
     const jsxSoftwares = softwares.map(software => <option key={software.id} value={'/api/software/' + software.id}>{software.name}</option>);
     const jsxCategories = categories.map(category => <option key={category.id} value={'/api/categories/' + category.id}>{category.name}</option>);
 
-    if (loading.form) {
+    const jsxLoading = loading.form ? 'Ajout du raccourci en cours' : '';
+    if (loading.categories || loading.softwares || loading.form) {
       return (
-        <div>Ajout du raccourci en cours</div>
-      );
-    } else if (loading.categories || loading.softwares) {
-      return (
-        <div>Formulaire en cours de chargement</div>
-      )
-    }
+        <Loader
+          className="loader"
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}/>
+      )}
 
     return (
       <form onSubmit={(event) => this.handleSubmit(event)} className="col-6 m-auto p-4">

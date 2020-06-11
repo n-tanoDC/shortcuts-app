@@ -6,10 +6,9 @@ class SoftwareCard extends Component {
     const {software, shortcuts} = this.props;
     let jsxShortcuts = <p>Aucun raccourci pour {software.name}</p>
     
-    if (shortcuts[0]) {
+    if (shortcuts.length > 0) {
       jsxShortcuts = shortcuts.map(shortcut => <Link key={shortcut.id} to={"/shortcut/" + shortcut.id}>{shortcut.title}</Link>)
-    }
-    
+    }    
 
     return (
       <div className="col p-4">
