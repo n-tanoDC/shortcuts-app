@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Loader from 'react-loader-spinner';
+import Select from 'react-select';
 
 class AddShortcutPage extends Component {
 
@@ -20,21 +21,37 @@ class AddShortcutPage extends Component {
   }
 
   handleChange(event) {
-    let value = event.target.value;
+    let value, propertyName;
 
-    if (event.target.name === 'categories') {
-      value = [];
-      for (const option of event.target.options) {
-        if (option.selected) {
-          value.push(option.value);
-        }
-      }
+    if (event[0]) {
+      propertyName = "categories";
+      value = event.map(e => e.value);
+    } else {
+      propertyName = event.target.name;
+      value = event.target.value;
     }
 
     this.setState({
-      [event.target.name]: value
+      [propertyName]: value
     });
   }
+
+  //  handleChange(event) {
+  //   let value = event.target.value;
+  
+  //   if (event.target.name === 'categories') {
+  //     value = [];
+  //     for (const option of event.target.options) {
+  //       if (option.selected) {
+  //         value.push(option.value);
+  //       }
+  //     }
+  //   }
+
+  //   this.setState({
+  //     [event.target.name]: value
+  //   });
+  // }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -44,9 +61,9 @@ class AddShortcutPage extends Component {
   render() {
     const {softwares, categories, loading} = this.props;
     const jsxSoftwares = softwares.map(software => <option key={software.id} value={'/api/software/' + software.id}>{software.name}</option>);
-    const jsxCategories = categories.map(category => <option key={category.id} value={'/api/categories/' + category.id}>{category.name}</option>);
+    // const jsxCategories = categories.map(category => <option key={category.id} value={'/api/categories/' + category.id}>{category.name}</option>);
+    const jsxCategories = categories.map(category => ({ value: '/api/categories/' + category.id, label: category.name}));
 
-    const jsxLoading = loading.form ? 'Ajout du raccourci en cours' : '';
     if (loading.categories || loading.softwares || loading.form) {
       return (
         <Loader
@@ -84,9 +101,10 @@ class AddShortcutPage extends Component {
           </select>
         </div>
         <div className="form-group">
-          <select multiple onChange={(event) => this.handleChange(event)} className="form-control" name="categories">
+          <Select isMulti options={jsxCategories} onChange={(event) => this.handleChange(event)} name="categories"/>
+          {/* <select multiple onChange={(event) => this.handleChange(event)} className="form-control" name="categories">
             {jsxCategories}
-          </select>
+          </select> */}
         </div>
         <button className="btn btn-primary">Ajouter</button>
       </form>
