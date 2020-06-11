@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import 'moment/locale/fr'
 
 class ShortcutCard extends Component {
   render() {
     const {shortcut} = this.props;
+    const date = moment(shortcut.created_at).locale('fr').fromNow();
 
     return (
       <div className="col p-4">
@@ -14,6 +17,7 @@ class ShortcutCard extends Component {
           <div className="card-body col">
             <h2 className="card-title">{shortcut.title}</h2>
             <p className="card-text">{shortcut.context}</p>
+            <p>{date}</p>
             <NavLink className="btn btn-primary" to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>
           </div>
         </div>
