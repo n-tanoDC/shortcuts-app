@@ -35,7 +35,7 @@ function App() {
           <Route exact path='/' component={HomePage}/>
           <Route path='/software' component={SoftwaresPage}/>
           <Route path='/add-shortcut' component={AddShortcutPage}/>
-          <Route path='/shortcut/:id' component={ShortcutDetails}/>
+          <Route path='/shortcuts/:id' component={ShortcutDetails}/>
         </Switch>
       </BrowserRouter>
     </Provider>

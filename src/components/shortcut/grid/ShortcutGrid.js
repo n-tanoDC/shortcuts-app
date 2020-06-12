@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ShortcutCardContainer from "../card/ShortcutCardContainer";
 import Loader from "react-loader-spinner";
 
-const CARDS_DISPLAYED = 30;
+const CARDS_DISPLAYED = 6;
 
 class ShortcutGrid extends Component {
 
@@ -39,10 +39,10 @@ class ShortcutGrid extends Component {
 
     return (
       <div className="d-flex flex-column align-items-center">
-        <div className="row row-cols-1 row-cols-md-2">
+        <div className="row row-cols-1 row-cols-md-2 mw-100">
           {shortcutsJsx}
         </div>
-        <div className="btn-group">
+        <div className="btn-group my-4">
           <button disabled={cardsDisplayed >= shortcuts.length} onClick={() => this.handleClick()} className="btn btn-warning text-white">Voir Plus</button>
           <a className="btn btn-info" href="#">Haut de la page</a>
         </div>

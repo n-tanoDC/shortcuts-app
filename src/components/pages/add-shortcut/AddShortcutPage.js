@@ -75,39 +75,42 @@ class AddShortcutPage extends Component {
       )}
 
     return (
-      <form onSubmit={(event) => this.handleSubmit(event)} className="col-6 m-auto p-4">
-        <div className="form-group">
-          <input required onChange={(event) => this.handleChange(event)} type="text" name="title" className="form-control" placeholder="Titre"/>
-        </div>
-        <div className="form-group">
-          <input required onChange={(event) => this.handleChange(event)} type="text" name="windows" className="form-control" placeholder="Windows"/>
-        </div>
-        <div className="form-group">
-          <input required onChange={(event) => this.handleChange(event)} type="text" name="macos" className="form-control" placeholder="Mac OS"/>
-        </div>
-        <div className="form-group">
-          <input required onChange={(event) => this.handleChange(event)} type="text" name="linux" className="form-control" placeholder="Linux"/>
-        </div>
-        <div className="form-group">
-          <input required onChange={(event) => this.handleChange(event)} type="text" name="context" className="form-control" placeholder="Contexte"/>
-        </div>
-        <div className="form-group">
-          <textarea required onChange={(event) => this.handleChange(event)} className="form-control" name="description" placeholder="Description"/>
-        </div>
-        <div className="form-group">
-          <select required onChange={(event) => this.handleChange(event)} className="form-control" name="software">
-            <option disabled> - Choisissez un logiciel</option>
-            {jsxSoftwares}
-          </select>
-        </div>
-        <div className="form-group">
-          <Select isMulti options={jsxCategories} onChange={(event) => this.handleChange(event)} name="categories"/>
-          {/* <select multiple onChange={(event) => this.handleChange(event)} className="form-control" name="categories">
-            {jsxCategories}
-          </select> */}
-        </div>
-        <button className="btn btn-primary">Ajouter</button>
-      </form>
+      <div>
+        <form onSubmit={(event) => this.handleSubmit(event)} className="col-6 m-auto p-4">
+          <h1 className="mb-4 display-4">Ajouter un raccourci</h1>
+          <div className="form-group">
+            <input required onChange={(event) => this.handleChange(event)} type="text" name="title" className="form-control" placeholder="Titre"/>
+          </div>
+          <div className="form-group">
+            <input required onChange={(event) => this.handleChange(event)} type="text" name="windows" className="form-control" placeholder="Windows"/>
+          </div>
+          <div className="form-group">
+            <input required onChange={(event) => this.handleChange(event)} type="text" name="macos" className="form-control" placeholder="Mac OS"/>
+          </div>
+          <div className="form-group">
+            <input required onChange={(event) => this.handleChange(event)} type="text" name="linux" className="form-control" placeholder="Linux"/>
+          </div>
+          <div className="form-group">
+            <input required onChange={(event) => this.handleChange(event)} type="text" name="context" className="form-control" placeholder="Contexte"/>
+          </div>
+          <div className="form-group">
+            <textarea required onChange={(event) => this.handleChange(event)} className="form-control" name="description" placeholder="Description"/>
+          </div>
+          <div className="form-group">
+            <select required onChange={(event) => this.handleChange(event)} className="form-control" name="software">
+              <option disabled> - Choisissez un logiciel</option>
+              {jsxSoftwares}
+            </select>
+          </div>
+          <div className="form-group">
+            <Select isMulti options={jsxCategories} onChange={(event) => this.handleChange(event)} name="categories"/>
+            {/* <select multiple onChange={(event) => this.handleChange(event)} className="form-control" name="categories">
+              {jsxCategories}
+            </select> */}
+          </div>
+          <button className="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
     )
   }
 }

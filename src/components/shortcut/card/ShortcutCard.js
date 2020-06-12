@@ -15,17 +15,18 @@ class ShortcutCard extends Component {
     const date = moment(shortcut.created_at).locale('fr').fromNow();
 
     return (
-      <div className="col p-4">
-        <div className="card flex-row align-items-center">
+      <div className="mw-50 p-4">
+        <div className="card bg-light w-100 flex-row align-items-center">
           <div className="col-2">
             <img src={process.env.REACT_APP_UPLOADS_URL + '/' +shortcut.software.logo} className="card-img-top" alt={shortcut.software.name}/>
           </div>
-          <div className="card-body col">
-            <h2 className="card-title">{shortcut.title}</h2>
+          <div className="card-body">
+            <h2 className="card-title font-weight-light">{shortcut.title}</h2>
             <p>{categories}</p>
-            <p className="card-text">{shortcut.context}</p>
-            <p>{date}</p>
-            <NavLink className="btn btn-primary" to={"/shortcut/" + shortcut.id}>Voir plus</NavLink>
+            <p className="font-weight-lighter font-italic">Ajouté {date}</p>
+            <div className="text-center">
+              <NavLink className="btn btn-primary btn-sm" to={"/shortcuts/" + shortcut.id}>Voir plus</NavLink>  
+            </div>
           </div>
         </div>
       </div>

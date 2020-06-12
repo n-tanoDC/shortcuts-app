@@ -28,10 +28,10 @@ class ShortcutDetails extends Component {
 
     return (
       <div>
-        <div className="d-flex align-items-center bg-dark p-1">
+        <div className="d-flex align-items-center bg-lightp-1">
           <img className="h-100 col-1 m-4 d-none d-md-block" src={process.env.REACT_APP_UPLOADS_URL + '/' + shortcut.software.logo} alt={shortcut.software.name}/>
           <div className="p-1">
-            <h1 className="display-4 text-light my-2">{shortcut.title}</h1>
+            <h1 className="display-4 my-2">{shortcut.title}</h1>
             <div className="my-2">
               {categories}
             </div>
