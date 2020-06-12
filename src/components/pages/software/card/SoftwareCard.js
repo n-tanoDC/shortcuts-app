@@ -13,7 +13,7 @@ class SoftwareCard extends Component {
           </div>
           <div className="card-body">
             <h3 className="card-title font-weight-lighter">{software.name}</h3>
-            <button className="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target={"#collapse" + software.id}>
+            <button className="btn btn-info btn-sm mb-2" type="button" data-toggle="collapse" data-target={"#collapse" + software.id}>
               Voir les raccourcis
             </button>
             <div className="collapse" id={"collapse" + software.id}>

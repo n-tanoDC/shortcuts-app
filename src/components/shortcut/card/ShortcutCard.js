@@ -25,7 +25,7 @@ class ShortcutCard extends Component {
             <p>{categories}</p>
             <p className="font-weight-lighter font-italic">Ajouté {date}</p>
             <div className="text-center">
-              <NavLink className="btn btn-primary btn-sm" to={"/shortcuts/" + shortcut.id}>Voir plus</NavLink>  
+              <NavLink className="btn btn-info btn-sm" to={"/shortcuts/" + shortcut.id}>Voir plus</NavLink>  
             </div>
           </div>
         </div>
