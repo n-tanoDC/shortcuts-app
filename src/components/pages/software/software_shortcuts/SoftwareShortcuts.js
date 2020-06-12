@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 class SoftwareShortcuts extends Component {
   render() {
-    const {shortcuts, software} = this.props;
+    const {shortcuts, software, limit} = this.props;
     let jsxShortcuts = <p>Aucun raccourci pour {software.name}</p>
 
     if (shortcuts.length > 0) {
       jsxShortcuts = shortcuts.map((shortcut, key) => <li key={key}><NavLink activeClassName="font-weight-bolder" className="text-dark" key={shortcut.id} to={"/shortcuts/" + shortcut.id}>{shortcut.title}</NavLink></li>)
-    }    
+    }
+
+    jsxShortcuts = limit ? jsxShortcuts.slice(0, limit) : jsxShortcuts;
 
     return (
       <ul className="list-unstyled">

@@ -69,8 +69,8 @@ class ShortcutDetails extends Component {
               <td>{jsxDemo}</td>
             </tr>
             <tr>
-              <th>Autres raccourcis {shortcut.software.name}</th>
-              <td><SoftwareShortcuts software={shortcut.software}/></td>
+              <th>Derniers raccourcis {shortcut.software.name}</th>
+              <td><SoftwareShortcuts software={shortcut.software} limit="6"/></td>
             </tr>
           </tbody>
         </table>
