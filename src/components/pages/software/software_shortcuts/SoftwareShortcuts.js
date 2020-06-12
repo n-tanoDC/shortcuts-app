@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SoftwareShortcuts extends Component {
   render() {
@@ -7,11 +7,11 @@ class SoftwareShortcuts extends Component {
     let jsxShortcuts = <p>Aucun raccourci pour {software.name}</p>
 
     if (shortcuts.length > 0) {
-      jsxShortcuts = shortcuts.map(shortcut => <li><Link className="text-decoration-none text-dark" key={shortcut.id} to={"/shortcuts/" + shortcut.id}>{shortcut.title}</Link></li>)
+      jsxShortcuts = shortcuts.map((shortcut, key) => <li key={key}><NavLink activeClassName="font-weight-bolder" className="text-dark" key={shortcut.id} to={"/shortcuts/" + shortcut.id}>{shortcut.title}</NavLink></li>)
     }    
 
     return (
-      <ul>
+      <ul className="list-unstyled">
         {jsxShortcuts}
       </ul>
     );

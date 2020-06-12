@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loader from 'react-loader-spinner';
+import SoftwareShortcuts from '../../pages/software/software_shortcuts/SoftwareShortcutsContainer';
 
 class ShortcutDetails extends Component {
   
@@ -9,7 +10,7 @@ class ShortcutDetails extends Component {
   } 
 
   render() {
-    const {shortcut, loading} = this.props;
+    const {shortcut, loading, shortcuts} = this.props;
 
     if (loading) {
       return (
@@ -66,6 +67,10 @@ class ShortcutDetails extends Component {
             <tr>
               <th scope="row">Démonstration</th>
               <td>{jsxDemo}</td>
+            </tr>
+            <tr>
+              <th>Autres raccourcis {shortcut.software.name}</th>
+              <td><SoftwareShortcuts software={shortcut.software}/></td>
             </tr>
           </tbody>
         </table>

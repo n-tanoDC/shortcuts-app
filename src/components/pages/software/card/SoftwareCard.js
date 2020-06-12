@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import SoftwareShortcuts from '../software_shortcuts/SoftwareShortcuts';
+import SoftwareShortcuts from '../software_shortcuts/SoftwareShortcutsContainer';
 
 class SoftwareCard extends Component {
   render() {
-    const {software, shortcuts} = this.props;
+    const {software} = this.props;
  
     return (
       <div className="col p-4">
@@ -18,7 +18,7 @@ class SoftwareCard extends Component {
             </button>
             <div className="collapse" id={"collapse" + software.id}>
               <div className="card card-body">
-                <SoftwareShortcuts software={software} shortcuts={shortcuts}/>
+                <SoftwareShortcuts software={software}/>
               </div>
             </div>
           </div>
