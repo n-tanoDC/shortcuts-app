@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import SoftwareShortcuts from '../software_shortcuts/SoftwareShortcuts';
 
 class SoftwareCard extends Component {
   render() {
     const {software, shortcuts} = this.props;
-    let jsxShortcuts = <p>Aucun raccourci pour {software.name}</p>
-    
-    if (shortcuts.length > 0) {
-      jsxShortcuts = shortcuts.map(shortcut => <Link className="text-decoration-none text-dark" key={shortcut.id} to={"/shortcuts/" + shortcut.id}>{shortcut.title}</Link>)
-    }    
-
+ 
     return (
       <div className="col p-4">
         <div className="card flex-row align-items-center bg-light">
@@ -23,7 +18,7 @@ class SoftwareCard extends Component {
             </button>
             <div className="collapse" id={"collapse" + software.id}>
               <div className="card card-body">
-                {jsxShortcuts}
+                <SoftwareShortcuts software={software} shortcuts={shortcuts}/>
               </div>
             </div>
           </div>

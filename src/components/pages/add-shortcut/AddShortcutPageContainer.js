@@ -10,7 +10,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addShortcut: shortcut => dispatch(addShortcut(shortcut)),
-  fetchShortcuts: () => dispatch(fetchShortcuts())
 });
 
 export default connect(
