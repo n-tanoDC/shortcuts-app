@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Loader from 'react-loader-spinner';
-import AddShortcutForm from './form/AddShortcutForm';
+import AddShortcutForm from './form/AddShortcutFormContainer';
 
 class AddShortcutPage extends Component {
 
   render() {
-    const {softwares, categories, loading, addShortcut} = this.props;
+    const {loading} = this.props;
 
     if (loading.categories || loading.softwares || loading.form) {
       return (
@@ -19,7 +19,7 @@ class AddShortcutPage extends Component {
     }
 
     return (
-      <AddShortcutForm softwares={softwares} categories={categories} addShortcut={addShortcut}/>
+      <AddShortcutForm />
     )
   }
 

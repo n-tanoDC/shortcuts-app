@@ -59,7 +59,7 @@ function shortcuts(state = initialState, action) {
         ...state,
         loading: { ...state.loading, form: false },
         error: { ...state.error, form: null },
-        shortcuts: [ ...state.shortcuts, action.payload.shortcut ]
+        shortcuts: [ action.payload.shortcut, ...state.shortcuts ]
       };
     default:
       return state;

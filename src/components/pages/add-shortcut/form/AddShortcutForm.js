@@ -58,7 +58,7 @@ class AddShortcutForm extends Component {
   }
   
   render() {
-    const {softwares, categories, loading} = this.props;
+    const {softwares, categories} = this.props;
     const jsxSoftwares = softwares.map(software => <option key={software.id} value={'/api/software/' + software.id}>{software.name}</option>);
     // const jsxCategories = categories.map(category => <option key={category.id} value={'/api/categories/' + category.id}>{category.name}</option>);
     const jsxCategories = categories.map(category => ({ value: '/api/categories/' + category.id, label: category.name}));

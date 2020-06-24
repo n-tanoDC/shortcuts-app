@@ -103,7 +103,7 @@ export function addShortcut(shortcut) {
         }
       })
       .catch(err => dispatch(addShortcutFailure(err)))
-      .then(() => dispatch(fetchShortcuts()))
+      // .then(() => dispatch(fetchShortcuts()))
   };
 }
 
